@@ -216,7 +216,7 @@ class: middle center
 ```HTML+Django
     <!-- template.html -->
 
-    {% load static i18n %}
+    <!-- {% load static i18n %} -->
     <!DOCTYPE html>
     <html lang="en">
         <head>
