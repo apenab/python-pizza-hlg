@@ -33,7 +33,16 @@ class: middle
 
 ---
 
-class: middle
+class: middle center
+
+<div style="display:grid;grid-template-columns:2fr 1fr 2fr;justify-items:center; align-items:center">
+    <img style="width:300px" src="images/django_logo.png">
+     
+</div>
+
+---
+
+class: middle center
 
 <div style="display:grid;grid-template-columns:2fr 1fr 2fr;justify-items:center; align-items:center">
     <img style="width:300px" src="images/django_logo.png">
@@ -142,21 +151,41 @@ class: middle center
 [django-cors-headers](https://github.com/adamchainz/django-cors-headers)
 
 ```python
-    # settings.py
-    
-    INSTALLED_APP = [
-        ...
-        'corsheaders',
-    ]
+# settings.py
 
-    MIDDLEWARE = [
-        ...
-        'corsheaders.middleware.CorsMiddleware',
-    ]
+INSTALLED_APP = [
+    ...
+    'corsheaders',
+]
 
-    # 📢 Solo en modo DEV
-    CORS_ORIGIN_ALLOW_ALL = True
+MIDDLEWARE = [
+    ...
+    'corsheaders.middleware.CorsMiddleware',
+]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+```
+
+---
+
+[django-cors-headers](https://github.com/adamchainz/django-cors-headers)
+
+```python
+# settings.py
+
+INSTALLED_APP = [
+    ...
+    'corsheaders',
+]
+
+MIDDLEWARE = [
+    ...
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+# 📢 Solo en modo DEV
+*CORS_ORIGIN_ALLOW_ALL = True
 ```
 
 ---
@@ -193,43 +222,85 @@ class: middle center
 ---
 
 ```javascript
-    // webpack.config.js
+// webpack.config.js
 
-    const webpack = require("webpack");
-    const path = require("path");
+var path = require("path");
+var webpack = require("webpack");
 
-    module.exports = (env) => {
-        return {
-            entry: {
-                index: "./src/index.js",
-            },
-            output: {
-                path: path.resolve("./dist"),
-                filename: "bundle.js",
-            },
-        };
-    };
+module.exports = {
+    entry: "./index.js",
+    output: {
+        path: path.resolve("./bundles/"),
+        filename: "bundle.js",
+    },
+};
+```
+
+---
+
+```javascript
+// webpack.config.js
+
+var path = require("path");
+var webpack = require("webpack");
+
+module.exports = {
+*   entry: "./index.js",
+    output: {
+        path: path.resolve("./bundles/"),
+        filename: "bundle.js",
+    },
+};
+```
+
+---
+
+```javascript
+// webpack.config.js
+
+var path = require("path");
+var webpack = require("webpack");
+
+module.exports = {
+*   entry: "./index.js",
+    output: {
+        path: path.resolve("./bundles/"),
+*       filename: "bundle.js",
+    },
+};
 ```
 
 ---
 
 ```HTML+Django
-    {% raw %}
-    <!-- template.html -->
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hola mundo</title>
+    </head>
+    <body>
+        ....
+    </body>
+</html>
+```
 
-    <!-- {% load static i18n %} -->
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8" />
-            <title>Hola mundo</title>
-        </head>
-        <body>
-            ....
-            <script src="{% static 'bundle.js' %}"></script>
-        </body>
-    </html>
-    {% endraw %}>
+---
+
+```HTML+Django
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hola mundo</title>
+    </head>
+    <body>
+        ....
+*       <script src="{% static 'bundle.js' %}">
+    </body>
+</html>
 ```
 
 ---
@@ -287,57 +358,91 @@ class: middle center
 ---
 
 ```javascript
-    // webpack.config.js
+// webpack.config.js
 
-    var path = require("path");
-    var webpack = require("webpack");
-    var BundleTracker = require("webpack-bundle-tracker");
+var path = require("path");
+var webpack = require("webpack");
 
-    module.exports = {
-        entry: "./index.js",
-        output: {
-            path: path.resolve("./bundles/"),
-            filename: "[name]-[hash].js",
-        },
+module.exports = {
+    entry: "./index.js",
+    output: {
+        path: path.resolve("./bundles/"),
+        filename: "bundle.js",
+    },
+};
+```
 
-        plugins: [new BundleTracker({ filename: "./webpack-stats.json" })],
-    };
+---
+
+```javascript
+// webpack.config.js
+
+var path = require("path");
+var webpack = require("webpack");
+*var BundleTracker = require("webpack-bundle-tracker");
+
+module.exports = {
+    entry: "./index.js",
+    output: {
+        path: path.resolve("./bundles/"),
+*       filename: "[name]-[hash].js",
+    },
+
+*   plugins: [new BundleTracker({ filename: "./webpack-stats.json" })],
+};
 ```
 
 ---
 
 ```python
-    # settings.py
+# settings.py
 
-    INSTALLED_APP = [
-        ...
-        'webpack_loader',
-    ]
+INSTALLED_APP = [
+    ...
+    'webpack_loader',
+]
 
 ```
 
 ---
 
 ```HTML+Django
-    {% raw %}
-    <!-- template.html -->
-    {% load render_bundle from webpack_loader %}
-    <html>
-        <head>
-            {% render_bundle 'main' 'css' %}
-        </head>
-        <body>
-            ....
-            {% render_bundle 'main' 'js' %}
-        </body>
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hola mundo</title>
     </head>
-    {% endraw %}
+    <body>
+        ....
+    </body>
+</html>
 ```
 
 ---
+
+```HTML+Django
+{% load static i18n %}
+*{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hola mundo</title>
+    </head>
+    <body>
+        ....
+*       {% render_bundle 'bundle' 'js' %}
+    </body>
+</html>
+```
+
+---
+
 # Alternativas
 
-- [Django Manifest Loader](https://github.com/shonin/django-manifest-loader)
+-   [Django Manifest Loader](https://github.com/shonin/django-manifest-loader)
 
 ---
 
