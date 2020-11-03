@@ -319,6 +319,7 @@ class: middle center
 ---
 
 ```HTML+Django
+    {% raw %}
     <!-- template.html -->
     {% load render_bundle from webpack_loader %}
     <html>
