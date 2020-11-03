@@ -214,6 +214,7 @@ class: middle center
 ---
 
 ```HTML+Django
+    {% raw %}
     <!-- template.html -->
 
     <!-- {% load static i18n %} -->
@@ -228,6 +229,7 @@ class: middle center
             <script src="{% static 'bundle.js' %}"></script>
         </body>
     </html>
+    {% endraw %}>
 ```
 
 ---
@@ -318,9 +320,7 @@ class: middle center
 
 ```HTML+Django
     <!-- template.html -->
-
     {% load render_bundle from webpack_loader %}
-
     <html>
         <head>
             {% render_bundle 'main' 'css' %}
@@ -330,6 +330,7 @@ class: middle center
             {% render_bundle 'main' 'js' %}
         </body>
     </head>
+    {% endraw %}
 ```
 
 ---
