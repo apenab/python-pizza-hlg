@@ -59,44 +59,6 @@ class: middle center
 
 class: middle
 
-<div style="display:grid;grid-template-columns:2fr 1fr 2fr;justify-items:center; align-items:center">
-    <img style="width:300px" src="images/django_logo.png">
-    <p style="font-size:5rem;margin:0px;position:relative;top:-20px">
-        +
-    </p>
-    <div style="display:flex; flex-direction:column; align-items:center; position: relative; top:30px">
-    <img style="width:150px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"/>
-    <span style="font-size:2rem">React</span> 
-    <div style="margin:50px;display:flex;flex-direction:column;align-items:center"> 
-        <img style="width:150px;" src="images/webpack.svg">
-        <span style="font-size:2rem">Webpack</span> 
-    <div>
-    </div>
-</div>
----
-
-class: middle
-
-<div style="display:grid;grid-template-columns:2fr 1fr 2fr;justify-items:center; align-items:center">
-    <img style="width:300px" src="images/django_logo.png">
-    <p style="font-size:5rem;margin:0px;position:relative;top:-20px">
-        +
-    </p>
-    <div style="display:flex; flex-direction:column; align-items:center; position: relative; top:30px">
-    <img style="width:150px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K"/>
-    <span style="font-size:2rem">React</span> 
-    <div style="margin-top:20px;display:flex;flex-direction:column;align-items:center"> 
-        <img style="width:150px;" src="images/webpack.svg">
-        <span style="font-size:2rem">Webpack</span> 
-    <div>
-    <img style="width:200px;margin-top:50px" src="images/babel.svg">
-    </div>
-</div>
-
----
-
-class: middle
-
 <h1>
     ¿Qué opciones tengo para <b style="color:var(--primary-color)">pegar</b> estas dos herramientas?
 </h1>
@@ -163,29 +125,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-
-```
-
----
-
-[django-cors-headers](https://github.com/adamchainz/django-cors-headers)
-
-```python
-# settings.py
-
-INSTALLED_APP = [
-    ...
-    'corsheaders',
-]
-
-MIDDLEWARE = [
-    ...
-    'corsheaders.middleware.CorsMiddleware',
-]
-
-# 📢 Solo en modo DEV
-*CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = [...]
 ```
 
 ---
@@ -311,11 +251,9 @@ module.exports = {
 
 ## Problemas con el "Teipe"
 
-### En modo desarrollo
+.box[Cacheo de ficheros estáticos por parte del navegador.]
 
 ---
-
-## Problemas con el "Teipe"
 
 ### En modo desarrollo
 
@@ -323,25 +261,21 @@ module.exports = {
 
 ---
 
-## Problemas con el "Teipe"
-
 ### En modo desarrollo
 
 <img src="images/network.png">
 
-### En modo producción
+### Pero en modo producción 🤔?
 
 ---
 
-## Problemas con el "Teipe"
-
 ### En modo desarrollo
 
 <img src="images/network.png">
 
-### En modo producción
+### Pero en modo producción 🤔?
 
-### 💥💥💥
+### 💣💥🔥🚒
 
 ---
 
